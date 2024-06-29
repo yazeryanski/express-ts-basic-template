@@ -1,12 +1,8 @@
-import posts from 'controllers/posts';
-import {Express} from 'express-serve-static-core';
+import express from "express";
+import healthRouter from "./health/health.route";
 
-export default function initRoutes(app: Express) {
+const router = express.Router();
 
-  app.use('/posts', posts);
+router.use("/health", healthRouter);
 
-  app.get('/', (req, res) => {
-    res.contentType('html');
-    res.send('WTF')
-  })
-}
+export default router;
